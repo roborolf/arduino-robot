@@ -59,19 +59,19 @@ void drive(float speed, float curvature){
   //straight
   if(curvature == 0) {
     
-    analogWrite(E1, pwmSpeed);   
-    analogWrite(E2, pwmSpeed);  
+    analogWrite(MOTOR1_E, pwmSpeed);   
+    analogWrite(MOTOR2_E, pwmSpeed);  
     
   //left
   } else if (curvature > 0) {
     
-    analogWrite(E1, pwmSpeed);   
-    analogWrite(E2, pwmSpeed * (1 - curvature)); //TODO: Test 
+    analogWrite(MOTOR1_E, pwmSpeed);   
+    analogWrite(MOTOR2_E, pwmSpeed * (1 - curvature)); //TODO: Test 
     
   //right  
   } else {
-    analogWrite(E1, pwmSpeed * (1 + curvature));  //TODO: Test 
-    analogWrite(E2, pwmSpeed); 
+    analogWrite(MOTOR1_E, pwmSpeed * (1 + curvature));  //TODO: Test 
+    analogWrite(MOTOR2_E, pwmSpeed); 
     
   }
   
