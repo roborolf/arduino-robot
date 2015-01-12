@@ -1,6 +1,9 @@
 //Motor communication Ports
+
+//right motor:
 const int MOTOR1_E = 6;
 const int MOTOR1_M = 7;
+//left motor:
 const int MOTOR2_E = 8;
 const int MOTOR2_M = 9;
 
@@ -35,44 +38,41 @@ void drive(float speed, float curvature){
     curvature = 1;
   else if (curvature < -1)
     curvature = -1;
- 
-  //drive forward
-  if(speed >= 0){
-    
-    //straight
-    if(curvature == 0) {
-      int pwmSpeed = (int) (speed * (255.0/100.0));
-      digitalWrite(MOTOR1_M, LOW)
-      digitalWrite(MOTOR2_M, LOW)
-      analogWrite(E1, pwmSpeed);   //PWM Speed Control
-      analogWrite(E2, pwmSpeed); 
-    
-    //left
-    } else if (curvature > 0) {
-    
-    //right  
-    } else {
-      
-    }
   
-  //drive backwards
+  //pwm Value for the motor controller  
+  int pwmSpeed = (int) (speed * (255.0/100.0));
+  
+  //set forward
+  if(speed >= 0){ 
+    
+    digitalWrite(MOTOR1_M, LOW);
+    digitalWrite(MOTOR2_M, LOW);
+  
+  //set backwards  
   } else {
-   
-    //straight
-    if(curvature == 0) {
-      int pwmSpeed = (int) (speed * (255.0/100.0));
-      digitalWrite(MOTOR1_M, HIGH)
-      digitalWrite(MOTOR2_M, HIGH)
-      analogWrite(E1, pwmSpeed);   //PWM Speed Control
-      analogWrite(E2, pwmSpeed);  
     
-    //left
-    } else if (curvature > 0) {
+    digitalWrite(MOTOR1_M, HIGH);
+    digitalWrite(MOTOR2_M, HIGH);
     
-    //right  
-    } else {
-      
-    }
   }
+
+  //straight
+  if(curvature == 0) {
     
+    analogWrite(E1, pwmSpeed);   
+    analogWrite(E2, pwmSpeed);  
+    
+  //left
+  } else if (curvature > 0) {
+    
+    analogWrite(E1, pwmSpeed);   
+    analogWrite(E2, pwmSpeed * (1 - 1/curvature)); //TODO: Test 
+    
+  //right  
+  } else {
+    analogWrite(E1, pwmSpeed * (1 - 1/curvature));  //TODO: Test 
+    analogWrite(E2, pwmSpeed); 
+    
+  }
+  
 }
