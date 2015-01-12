@@ -33,7 +33,7 @@ void drive(float speed, float curvature){
     if(curvature == 0) {
       int pwmSpeed = (int) (speed * (255.0/100.0));
       digitalWrite(MOTOR1_M, LOW)
-      digitalWrite(MOTOR1_M, LOW)
+      digitalWrite(MOTOR2_M, LOW)
       analogWrite(E1, pwmSpeed);   //PWM Speed Control
       analogWrite(E2, pwmSpeed); 
     
@@ -52,7 +52,7 @@ void drive(float speed, float curvature){
     if(curvature == 0) {
       int pwmSpeed = (int) (speed * (255.0/100.0));
       digitalWrite(MOTOR1_M, HIGH)
-      digitalWrite(MOTOR1_M, HIGH)
+      digitalWrite(MOTOR2_M, HIGH)
       analogWrite(E1, pwmSpeed);   //PWM Speed Control
       analogWrite(E2, pwmSpeed);  
     
