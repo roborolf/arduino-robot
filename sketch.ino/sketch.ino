@@ -26,6 +26,16 @@ void loop() {
  *     1: maximum drive to the left
  */
 void drive(float speed, float curvature){
+  
+  if (speed > 100 ) 
+    speed = 100.0;
+  else if (speed < -100)
+   speed = -100;
+  if (curvature > 1)
+    curvature = 1;
+  else if (curvature < -1)
+    curvature = -1;
+ 
   //drive forward
   if(speed >= 0){
     
