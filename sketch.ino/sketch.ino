@@ -70,7 +70,7 @@ void drive(float speed, float curvature){
     
   //right  
   } else {
-    analogWrite(E1, pwmSpeed * (1 - curvature));  //TODO: Test 
+    analogWrite(E1, pwmSpeed * (1 + curvature));  //TODO: Test 
     analogWrite(E2, pwmSpeed); 
     
   }
