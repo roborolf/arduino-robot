@@ -76,3 +76,11 @@ void drive(float speed, float curvature){
   }
   
 }
+
+/** 
+ * Makes the robot stop driving.
+ * 
+ */
+void stop(){
+  drive(0, 0);
+}
