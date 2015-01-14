@@ -53,6 +53,9 @@ void drive(float speed, float curvature){
     
     digitalWrite(MOTOR1_M, HIGH);
     digitalWrite(MOTOR2_M, HIGH);
+	
+	//and now invert the still negative speed value, so -50 becomes 50
+	speed = abs(speed);
     
   }
 
