@@ -1,14 +1,16 @@
 //Motor communication Ports
 
 //right motor:
-const int MOTOR1_E = 6;
-const int MOTOR1_M = 7;
+const int MOTOR1_E = 9;
+const int MOTOR1_M = 8;
 //left motor:
-const int MOTOR2_E = 8;
-const int MOTOR2_M = 9;
+const int MOTOR2_E = 3;
+const int MOTOR2_M = 2;
 
 void setup(){
-  Serial.begin(9600); 
+  Serial.begin(9600);
+  Serial.print("Test");
+  drive(50, 0);
 }
 
 void loop() {
