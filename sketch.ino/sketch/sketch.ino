@@ -51,7 +51,7 @@ void drive(float speed, float curvature){
     curvature = -1;
   
   //pwm Value for the motor controller  
-  int pwmSpeed = (int) (speed * (255.0/100.0));
+  int pwmSpeed = (int) (abs(speed) * (255.0/100.0));
   
   //set forward
   if(speed >= 0){ 
@@ -64,9 +64,6 @@ void drive(float speed, float curvature){
     
     digitalWrite(MOTOR1_M, HIGH);
     digitalWrite(MOTOR2_M, HIGH);
-	
-	//and now invert the still negative speed value, so -50 becomes 50
-	speed = abs(speed);
     
   }
 
