@@ -8,13 +8,22 @@ const int MOTOR2_E = 3;
 const int MOTOR2_M = 2;
 
 void setup(){
-  Serial.begin(9600);
-  Serial.print("Test");
+  Serial.begin(9600); 
   drive(50, 0);
 }
 
-void loop() {
-  
+void loop() {  
+  if (Serial.available())
+  {
+    String spds = Serial.readStringUntil(',');
+    String crvs = Serial.readStringUntil(';');
+    int spd = spds.toInt();
+    float crv = crvs.toFloat();
+    drive(spd, crv);   
+            
+  }
+   
+  delay(5);
 }
 
 /**
